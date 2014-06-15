@@ -25,13 +25,13 @@
 INCFLAGS = -I/usr/local/include/ -I../../src/ -I.
 
 # NOTE: Uncomment the flag GRAPHCHI_USE_GSL if you want to compile pmf
-CPPFLAGS = -O3  $(INCFLAGS) -DEIGEN_NDEBUG -fopenmp -Wno-strict-aliasing  -Wall
+CPPFLAGS = -O3  $(INCFLAGS) -DEIGEN_NDEBUG `pkg-config --cflags eigen3` -fopenmp -Wno-strict-aliasing  -Wall
 # NOTE: uncomment the flag -lgsl if you want to compile pmf
 LINKFLAGS = -lz 
 # Note : on Ubuntu on some compilers -lz is not detected properly so it is 
 # deliberatively set to be the last flag.
-CPP = g++
-CXX = g++
+CPP = g++-4.8
+CXX = g++-4.8
 headers=$(wildcard *.h**)
 all: $(patsubst %.cpp, %, $(wildcard *.cpp))
 
